@@ -4,3 +4,9 @@ template:
       ganalytics: UA-82807227-1
       
 URL: https://randel.github.io/scMD/
+
+navbar:
+  title: "scMD"
+  right:
+    - icon: fa-github
+      href: https://github.com/randel/scMD
