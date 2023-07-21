@@ -8,7 +8,7 @@ devtools::install_github("randel/scMD")
 ```
 
 ## Workflow
-<img src = "./man/Figure/scMD Figure1.jpg">
+<img src = "./man/figures/scMDFigure1.jpg">
 
 
 Tutorial
