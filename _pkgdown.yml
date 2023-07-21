@@ -1,4 +1,6 @@
-url: ~
 template:
-  bootstrap: 5
-
+  params:
+      bootswatch: flatly
+      ganalytics: UA-82807227-1
+      
+URL: https://randel.github.io/scMD/
