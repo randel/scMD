@@ -82,13 +82,19 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="scmd">scMD<a class="anchor" aria-label="anchor" href="#scmd"></a>
+<div class="page-header"><h1 id="single-cell-methylation-deconvolution-scmd">single cell Methylation Deconvolution (scMD)<a class="anchor" aria-label="anchor" href="#single-cell-methylation-deconvolution-scmd"></a>
 </h1></div>
-<p>scMD (single cell Methylation Deconvolution), a cellular deconvolution framework to reliably estimate cell type fractions from tissue-level DNAm data with single-cell DNAm references.</p>
+<p>a cellular deconvolution framework to reliably estimate cell type fractions from tissue-level DNAm data with single-cell DNAm (scDNAm) references.</p>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p><code>scMD</code> is designed to generate reliable references from scDNAm. Evidenced by rigorous benchmarking across multiple datasets, it excels in estimating cellular fractions from bulk DNAm data and in identifying Alzheimer’s disease-associated cell types. This package provides processed signatures for instant use and also feasible code to conduct DNAm deconvolution.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<pre><code><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"randel/scMD"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"randel/scMD"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
