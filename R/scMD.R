@@ -1,6 +1,8 @@
-#' scMD
+# Author: Manqi Cai
+###################################################
+#' @title scMD framework
 #'
-#' Perform signature generation and ensemble deconvolution using the scMD algorithm.
+#' @description  This function is used to perform signature generation and ensemble deconvolution using the scMD algorithm.
 #'
 #' @param dat A beta matrix containing the scDNAm data.
 #' @param bulk A matrix of bulk data.
@@ -19,12 +21,18 @@
 #'                the input data is already preprocessed to only include markers for deconvolution.
 #' @param output_path A character specifying the path to save the output results. Default is the current directory (".").
 #'
-#' @return A list containing various results including phat_all (estimated cell-type fractions), scMD_p (scMD estiamted CTS fractions),
-#'         nmrk (number of markers used), and sig (signatures used in the deconvolution).
+#' @return If scMD converges, return:
+#' \itemize{
+#'    \item {scMD_p: matrix, scMD estiamted CTS fractions.}
+#'    \item {phat_all: list, estimated cell-type fractions.}
+#'    \item {sig: matriix, signatures used in the deconvolution.}
+#'    }
 #'
 #' @examples
 #' # Assuming 'dat',  'bulk', 'DM_df', and 'sig_all' are defined
 #' scMD(dat = my_dat, bulk = my_bulk, DM_df = my_DM_df, sig_all = my_sig_all)
+#'
+#' @export
 scMD <- function(dat,bulk,nc =5,
                  DM_df = NULL,dmet_list = c("CIBERSORT","EPIC","FARDEEP","DCQ","DeconRNASeq","BayesPrism","ICeDT","dtangle","hspe"),
                  include_minfi = TRUE,nmrk = 100,
@@ -108,7 +116,7 @@ scMD <- function(dat,bulk,nc =5,
   saveRDS(phat_all, file = paste0(output_path,"phat_all.rds"))
   scMD_p = CTS_EnsDeconv_wrapper2(phat_all = phat_all)[["ensemble_p"]]
 
-  return(list(phat_all = phat_all, scMD_p=scMD_p,nmrk = nmrk,sig = sig))
+  return(list(scMD_p=scMD_p,phat_all = phat_all, sig = sig))
 }
 
 get_sig <- function(nmrk,sig = sig_all,DM_info = Mrk_twosided,

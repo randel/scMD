@@ -8,13 +8,28 @@ Introduction
 
 Installation
 -------------------
-
+To run the complete tutorial, please install the scMD package.
 ```r
-devtools::install_github("randel/scMD")
+# install devtools if necessary
+install.packages('devtools')
+
+# install the scMD package
+devtools::install_github('randel/scMD')
+
+# load
+library(scMD)
 ```
 
+Data
+-------------------
+The scMD package offers a range of processed signatures obtained from the studies conducted by Lee et al. and Tian et al. These signatures are available in two versions: one comprising signatures under the 850k platform and the other under the 450k platform.
+
+To access the processed signatures, please navigate to the following link: https://github.com/randel/scMD/tree/main/Processed_data_450k850k
+
+
+
 Workflow
------------------
+-------------------
 
 <img src = "./man/figures/scMDFigure1.jpg">
 
@@ -30,4 +45,8 @@ https://randel.github.io/scMD/
 Reference
 -----------------
 
-Cai M, Zhou J, McKennan C, Wang J. (2023). scMD: cell type deconvolution using single-cell DNA methylation references.
+1. Cai M, Zhou J, McKennan C, Wang J. (2023). scMD: Cell Type Deconvolution Using Single-Cell DNA Methylation References.
+
+2. Lee, D. -S., Luo, C., Zhou, J., Chandran, S., Rivkin, A., Bartlett, A., Nery, J. R., Fitzpatrick, C., O’Connor, C., Dixon, J. R., et al. (2019). Simultaneous Profiling of 3D Genome Structure and DNA Methylation in Single Human Cells. Nature Methods, 16, 999–1006.
+
+3. Tian, W., Zhou, J., Bartlett, A., Zeng, Q., Liu, H., Castanon, R. G., Kenworthy, M., Altshul, J., Valadon, C., Aldridge, A., et al. (2022). Epigenomic Complexity of the Human Brain Revealed by Single-Cell DNA Methylomes and 3D Genome Structures. bioRxiv, 2022–11.
