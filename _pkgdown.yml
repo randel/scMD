@@ -2,11 +2,22 @@ template:
   params:
       bootswatch: flatly
       ganalytics: UA-82807227-1
-      
+
 URL: https://randel.github.io/scMD/
 
 navbar:
   title: "scMD"
+  left:
+    - text: Tutorial
+      href: articles/vignette.html
+    - text: Documentation
+      menu:
+      - text: scMD
+        href: reference/scMD.html
   right:
     - icon: fa-github
       href: https://github.com/randel/scMD
+
+
+
+

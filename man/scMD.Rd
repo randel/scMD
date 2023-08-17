@@ -5,9 +5,11 @@
 \title{scMD framework}
 \usage{
 scMD(
-  dat,
   bulk,
   nc = 5,
+  bulk_type = "450k",
+  use_sc = "Luo",
+  dat = NULL,
   DM_df = NULL,
   dmet_list = c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "DeconRNASeq", "BayesPrism",
     "ICeDT", "dtangle", "hspe"),
@@ -20,14 +22,21 @@ scMD(
 )
 }
 \arguments{
-\item{dat}{A beta matrix containing the scDNAm data.}
-
 \item{bulk}{A matrix of bulk data.}
 
 \item{nc}{An integer specifying the number of cores for parallel computation. Default is 5.}
 
+\item{bulk_type}{A character specifying the technical platform of bulk data. Default is "450k". It can also be chosen from "450k", "850k", "WGBS", or "NULL".
+When set to NULL, the users should provide `dat` and `DM_df`.}
+
+\item{use_sc}{A character specifying the inbuilt scDNAm to be used. Default is "Luo". It can also be chosen from "Luo", "Tian", or "NULL".
+When set to NULL, the users should provide `dat` and `DM_df`.}
+
+\item{dat}{A beta matrix containing the scDNAm data. Default is NULL. When set to NULL, scMD will used inbuilt scDNAm data instead.}
+
 \item{DM_df}{A data frame containing information about differentially methylated CpG sites from scDNAm data.
-It should include columns for TargetID and celltype_ind. The columns celltype_ind contain p-values for each cell type.}
+It should include columns for TargetID and celltype_ind. The columns celltype_ind contain p-values for each cell type.
+Default is NULL. When set to NULL, scMD will used inbuilt scDNAm data instead or the provided `dat` is already preprocessed.}
 
 \item{dmet_list}{A character vector specifying the list of deconvolution methods. Default is c("CIBERSORT", "EPIC", "FARDEEP", "DCQ",
 "DeconRNASeq", "BayesPrism", "ICeDT", "dtangle", "hspe").}
@@ -59,7 +68,7 @@ If scMD converges, return:
 This function is used to perform signature generation and ensemble deconvolution using the scMD algorithm.
 }
 \examples{
-# Assuming 'dat',  'bulk', 'DM_df', and 'sig_all' are defined
-scMD(dat = my_dat, bulk = my_bulk, DM_df = my_DM_df, sig_all = my_sig_all)
+# Assuming 'my_bulk' and 'my_bulk_type' are defined
+scMD(bulk = my_bulk, bulk_type = my_bulk_type)
 
 }

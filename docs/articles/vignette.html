@@ -46,17 +46,17 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/vignette.html">Tutorial</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
+    Documentation
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/vignette.html">vignette</a>
+      <a href="../reference/scMD.html">scMD</a>
     </li>
   </ul>
 </li>
@@ -91,13 +91,45 @@
 
     
     
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the most recent updates of scMD from github with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">scMD</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install devtools if necessary</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'devtools'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># install the scMD package</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'randel/scMD'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">scMD</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
+<p>We’ve made available pre-processed scMD <a href="https://github.com/randel/scMD/tree/main/Processed_data_450k850k" class="external-link">signatures</a>
+in CSV format for your convenience. You’re welcome to download and use
+them directly.</p>
+<p>Should you have your own bulk data for brain tissues and wish to
+utilize scMD directly, follow the steps below to estimate cell type
+proportions. Note that our estimates are focused on seven primary brain
+cell types: Astrocytes, Endothelial cells, Microglia, Neurons,
+Oligodendrocytes, and OPC.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Estimate cell type proportions</span></span>
+<span><span class="va">Est.prop.scMD</span> <span class="op">=</span> <span class="fu"><a href="../reference/scMD.html">scMD</a></span><span class="op">(</span>bulk <span class="op">=</span> <span class="va">test_bulk</span>, bulk_type <span class="op">=</span> <span class="va">test_bulk_type</span><span class="op">)</span></span>
+<span>                               </span>
+<span><span class="co"># Estimate when you have your own scDNAm data</span></span>
+<span><span class="co">#Est.prop.scMD = scMD(bulk = test_bulk, bulk_type = NULL,dat = beta_mtx,DM_df = df)</span></span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

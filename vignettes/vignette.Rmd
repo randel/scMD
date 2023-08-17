@@ -14,6 +14,35 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+
+## Installation
+
+You can install the most recent updates of scMD from github with:
+
+```{r setup, eval = FALSE}
+# install devtools if necessary
+install.packages('devtools')
+
+# install the scMD package
+devtools::install_github('randel/scMD')
+
+# load
 library(scMD)
 ```
+
+## Data
+
+We've made available pre-processed scMD [signatures](https://github.com/randel/scMD/tree/main/Processed_data_450k850k) in CSV format for your convenience. You're welcome to download and use them directly.
+
+Should you have your own bulk data for brain tissues and wish to utilize scMD directly, follow the steps below to estimate cell type proportions. Note that our estimates are focused on seven primary brain cell types: Astrocytes, Endothelial cells, Microglia, Neurons, Oligodendrocytes, and OPC.
+
+```{r, eval = FALSE}
+# Estimate cell type proportions
+Est.prop.scMD = scMD(bulk = test_bulk, bulk_type = test_bulk_type)
+                               
+# Estimate when you have your own scDNAm data
+#Est.prop.scMD = scMD(bulk = test_bulk, bulk_type = NULL,dat = beta_mtx,DM_df = df)
+
+```
+
+
