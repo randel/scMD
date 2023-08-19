@@ -1,14 +1,14 @@
-CTS_EnsDeconv_wrapper2 = function(allgene_res,df_true = NULL,maxit= 1000,phat_all = NULL){
-  
+CTS_EnsDeconv_wrapper = function(allgene_res,df_true = NULL,maxit= 1000,phat_all = NULL){
+
   if(is.null(phat_all)){
     allgene_res <- remove_na_mrk(allgene_res)$keep
-    
+
     phat_all <- unlist(lapply(allgene_res, getphat),recursive = FALSE)
     names(phat_all) <-gsub("TRUE.","TRUE_",names(phat_all))
     names(phat_all) <-gsub(".","_",names(phat_all), fixed = TRUE)
     names(phat_all) <-gsub("p_value","p.value",names(phat_all))
   }
-  
+
   if(!is.null(df_true)){
     phat_all <- lapply(phat_all,ord_name,df_true = df_true)
   }else{

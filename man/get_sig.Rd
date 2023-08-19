@@ -7,22 +7,22 @@
 get_sig(
   nmrk,
   sig = sig_all,
-  DM_info = Mrk_twosided,
-  ct_ind = c("Astro", "Micro_Endo", "Neuro", "Oligo")
+  DM_df = Mrk_twosided,
+  ct_ind = c("Astro", "Micro", "Neuro", "Oligo")
 )
 }
 \arguments{
 \item{nmrk}{An integer specifying the number of marker CpG sites to consider for each cell type.}
+
+\item{DM_df}{A data frame detailing differentially methylated CpG sites from scDNAm data.
+It should include columns for TargetID and celltype_ind, where columns corresponding to celltype_ind
+should have p-values for each cell type.}
 
 \item{ct_ind}{A character vector listing the cell types to include in the analysis.
 Default is c("Astro","Micro", "Neuro","Oligo").}
 
 \item{beta_mtx}{A matrix representing the scDNAm data. Default is NULL.
 If NULL, the function will utilize the inbuilt scDNAm dataset.}
-
-\item{DM_df}{A data frame detailing differentially methylated CpG sites from scDNAm data.
-It should include columns for TargetID and celltype_ind, where columns corresponding to celltype_ind
-should have p-values for each cell type.}
 }
 \value{
 A matrix of signatures that can be used for deconvolution.

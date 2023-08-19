@@ -7,25 +7,16 @@
 scMD(
   bulk,
   bulk_type = "450k_or_850k",
-  use_sc = "Both",
   ncluster = 5,
   dmet_list = NULL,
   nmrk = 100,
-  gen_sig = T,
-  celltype_ind = NULL,
-  output_path = ".",
-  sc_mtx = NULL,
-  DM_df = NULL
+  output_path = "."
 )
 }
 \arguments{
 \item{bulk}{A matrix of bulk data, with CpGs by sample.}
 
-\item{bulk_type}{A character string indicating the technical platform for the bulk data. Available options include "450k_or_850k", "WGBS", or "NULL".
-When set to "NULL", users are required to provide both `sc_mtx` and `DM_df`.}
-
-\item{use_sc}{A character specifying the inbuilt scDNAm to be used. Default is "Both". Options are "Luo", "Tian", "Both", or "NULL".
-When set to NULL, users must provide `sc_mtx` and `DM_df`.}
+\item{bulk_type}{A character string indicating the technical platform for the bulk data. Available options include "450k_or_850k" or "WGBS",.}
 
 \item{ncluster}{An integer specifying the number of cores for parallel computation. Default is 5.}
 
@@ -35,25 +26,13 @@ c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "ICeDT", "Houseman", "NNLS", "RPC").}
 
 \item{nmrk}{The number of markers per cell type used in deconvolution. Default is 100.}
 
-\item{gen_sig}{A logical value indicating whether to generate signatures for deconvolution. Default is TRUE. When FALSE,
-input data should already be preprocessed to only include markers for deconvolution.}
-
-\item{celltype_ind}{A character vector specifying the cell types included in the scMD analysis. Default is NULL, which includes all cell types from the input data.}
-
 \item{output_path}{A character specifying the path for saving intermediate results. Default is the current directory (".").}
-
-\item{sc_mtx}{A beta matrix containing the scDNAm data. Default is NULL. When NULL, scMD uses the inbuilt scDNAm data.}
-
-\item{DM_df}{A data frame with information about differentially methylated CpG sites from scDNAm data, including columns for TargetID and celltype_ind.
-Columns for celltype_ind should contain p-values for each cell type. Default is NULL.
-When NULL, scMD uses the inbuilt scDNAm data, or the provided `sc_mtx` is considered preprocessed.}
 }
 \value{
 If scMD converges, return:
 \itemize{
    \item {scMD_p: matrix, scMD estiamted CTS fractions.}
    \item {phat_all: list, estimated cell-type fractions.}
-   \item {sig: matrix, signatures used in the deconvolution.}
    }
 }
 \description{

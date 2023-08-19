@@ -12,7 +12,8 @@ LazyData: true
 Imports: 
     EnsDeconv,
     EpiDISH,
-    minfi
+    minfi,
+    quadprog
 Remotes: 
     randel/scMD,
     bioc::3.17/EpiDISH,
