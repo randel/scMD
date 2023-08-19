@@ -65,15 +65,10 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">scMD</span><span class="op">(</span></span>
 <span>  <span class="va">bulk</span>,</span>
 <span>  bulk_type <span class="op">=</span> <span class="st">"450k_or_850k"</span>,</span>
-<span>  use_sc <span class="op">=</span> <span class="st">"Both"</span>,</span>
 <span>  ncluster <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  dmet_list <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  nmrk <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  gen_sig <span class="op">=</span> <span class="cn">T</span>,</span>
-<span>  celltype_ind <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  output_path <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  sc_mtx <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  DM_df <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  output_path <span class="op">=</span> <span class="st">"."</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -84,13 +79,7 @@
 
 
 <dt>bulk_type</dt>
-<dd><p>A character string indicating the technical platform for the bulk data. Available options include "450k_or_850k", "WGBS", or "NULL".
-When set to "NULL", users are required to provide both `sc_mtx` and `DM_df`.</p></dd>
-
-
-<dt>use_sc</dt>
-<dd><p>A character specifying the inbuilt scDNAm to be used. Default is "Both". Options are "Luo", "Tian", "Both", or "NULL".
-When set to NULL, users must provide `sc_mtx` and `DM_df`.</p></dd>
+<dd><p>A character string indicating the technical platform for the bulk data. Available options include "450k_or_850k" or "WGBS",.</p></dd>
 
 
 <dt>ncluster</dt>
@@ -107,27 +96,8 @@ c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "ICeDT", "Houseman", "NNLS", "RPC").</p
 <dd><p>The number of markers per cell type used in deconvolution. Default is 100.</p></dd>
 
 
-<dt>gen_sig</dt>
-<dd><p>A logical value indicating whether to generate signatures for deconvolution. Default is TRUE. When FALSE,
-input data should already be preprocessed to only include markers for deconvolution.</p></dd>
-
-
-<dt>celltype_ind</dt>
-<dd><p>A character vector specifying the cell types included in the scMD analysis. Default is NULL, which includes all cell types from the input data.</p></dd>
-
-
 <dt>output_path</dt>
 <dd><p>A character specifying the path for saving intermediate results. Default is the current directory (".").</p></dd>
-
-
-<dt>sc_mtx</dt>
-<dd><p>A beta matrix containing the scDNAm data. Default is NULL. When NULL, scMD uses the inbuilt scDNAm data.</p></dd>
-
-
-<dt>DM_df</dt>
-<dd><p>A data frame with information about differentially methylated CpG sites from scDNAm data, including columns for TargetID and celltype_ind.
-Columns for celltype_ind should contain p-values for each cell type. Default is NULL.
-When NULL, scMD uses the inbuilt scDNAm data, or the provided `sc_mtx` is considered preprocessed.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -136,7 +106,6 @@ When NULL, scMD uses the inbuilt scDNAm data, or the provided `sc_mtx` is consid
 
 <p>If scMD converges, return:</p><ul><li><p>scMD_p: matrix, scMD estiamted CTS fractions.</p></li>
 <li><p>phat_all: list, estimated cell-type fractions.</p></li>
-<li><p>sig: matrix, signatures used in the deconvolution.</p></li>
 </ul></div>
 
     <div id="ref-examples">

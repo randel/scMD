@@ -63,6 +63,6 @@ scMD <- function(bulk, bulk_type = "450k_or_850k", ncluster =5,
   scMD_p <- CTS_EnsDeconv_wrapper(phat_all = c(Lee_res, Tian_res))[["ensemble_p"]]
 
 
-  return(list(scMD_p=scMD_p,phat_all = phat_all))
+  return(list(scMD_p=scMD_p,phat_all = c(Lee_res, Tian_res)))
 }
 

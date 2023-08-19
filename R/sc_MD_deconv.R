@@ -20,17 +20,17 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
   phat_all <- list()
 
   if("Houseman" %in% dmet_list) {
-    minfi_res <- DNAm_minfi_deconv_general(
+    suppressMessages(minfi_res <- DNAm_minfi_deconv_general(
       dat = sig,metaref = data.frame(SamplesName = colnames(sig), deconv_clust = colnames(sig)),
-      bulk = bulk,true_frac = NULL,findMrks = F)
+      bulk = bulk,true_frac = NULL,findMrks = F))
     phat_all <- append(phat_all, list(Houseman_beta = minfi_res[[2]]$counts, Houseman_m = minfi_res[[1]]$counts))
 
   } else if("NNLS" %in% dmet_list) {
-    frac_est <- est_frac(sig, bulk)
+    suppressMessages(frac_est <- est_frac(sig, bulk))
     phat_all <- append(phat_all, list(NNLS = frac_est))
 
   } else if("RPC" %in% dmet_list) {
-    frac_rpc <- epidish(bulk, sig, method = 'RPC')$estF
+    suppressMessages(frac_rpc <- epidish(bulk, sig, method = 'RPC')$estF)
     phat_all <- append(phat_all, list(RPC = frac_rpc))
   }
 
@@ -58,8 +58,13 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
                                    dmeths = dmet_list ), outpath = paste0(output_path,"beta"),
                                  parallel_comp = T, ncore = ncluster ) )
 
+  ind = sapply(res_Ens, function(x){
+    length(x[["a"]][["p_hat"]][[1]])
+  })
+  res_Ens = res_Ens[which(ind == 1)]
+
   # Extract phat values for "beta"
-  phat_list1 <- unlist(lapply(res_Ens$allgene_res, getphat), recursive = FALSE)
+  phat_list1 <- unlist(lapply(res_Ens, getphat), recursive = FALSE)
 
   # Create reference list for "Mval"
   ref_list_Mval <- list(
@@ -77,10 +82,15 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
       params = get_params( data_type = "singlecell-rna",  data_name = "Mval",
                            n_markers = 50,  Marker.Method = "none", TNormalization = c("none"),
                            CNormalization = c("none"), Scale = c("linear"),  dmeths = dmet_list ),
-      outpath = output_path, parallel_comp = T, ncore = nc ) )
+      outpath = output_path, parallel_comp = T, ncore = ncluster ) )
+
+  ind = sapply(res_Ens_mval, function(x){
+    length(x[["a"]][["p_hat"]][[1]])
+  })
+  res_Ens_mval = res_Ens_mval[which(ind == 1)]
 
   # Extract and combine phat values for "beta" and "Mval"
-  phat_list2 <- unlist(lapply(res_Ens_mval$allgene_res, getphat), recursive = FALSE)
+  phat_list2 <- unlist(lapply(res_Ens_mval, getphat), recursive = FALSE)
   phat_list1 <- append(phat_list1, phat_list2)
 
   phat_all <- append(phat_all, phat_list1)
@@ -92,4 +102,8 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
 
 }
 
+getphat = function(res){
+  res = res[["a"]][["p_hat"]][[1]]
+  return(res)
+}
 
