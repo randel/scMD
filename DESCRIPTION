@@ -1,7 +1,7 @@
 Package: scMD
 Type: Package
 Title: (single cell Methylation Deconvolution) a cellular deconvolution framework to reliably estimate cell type fractions from tissue-level DNAm data.
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: as.person(c( 
     "Manqi Cai <manqi.cai.mk@gmail.com> [aut, cre]"))
 Maintainer: Manqi Cai <manqi.cai.mk@gmail.com>
