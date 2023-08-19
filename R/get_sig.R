@@ -1,4 +1,7 @@
-#' Generate Deconvolution Signatures
+# Author: Manqi Cai
+###################################################
+#' @title get_sig
+#' @description  Generate Deconvolution Signatures
 #'
 #' This function generates deconvolution signatures based on the provided parameters.
 #' It uses differentially methylated CpG sites from single-cell DNA methylation (scDNAm) data

@@ -16,10 +16,16 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/news/index.html</loc>
+  </url>
+  <url>
     <loc>/reference/get_metric_wrap.html</loc>
   </url>
   <url>
     <loc>/reference/get_res_wrap.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_sig.html</loc>
   </url>
   <url>
     <loc>/reference/hello.html</loc>

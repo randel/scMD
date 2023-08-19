@@ -53,7 +53,7 @@ If scMD converges, return:
 \itemize{
    \item {scMD_p: matrix, scMD estiamted CTS fractions.}
    \item {phat_all: list, estimated cell-type fractions.}
-   \item {sig: matriix, signatures used in the deconvolution.}
+   \item {sig: matrix, signatures used in the deconvolution.}
    }
 }
 \description{

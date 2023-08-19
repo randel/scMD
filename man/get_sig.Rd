@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_sig.R
 \name{get_sig}
 \alias{get_sig}
-\title{Generate Deconvolution Signatures}
+\title{get_sig}
 \usage{
 get_sig(
   nmrk,
@@ -28,6 +28,8 @@ should have p-values for each cell type.}
 A matrix of signatures that can be used for deconvolution.
 }
 \description{
+Generate Deconvolution Signatures
+
 This function generates deconvolution signatures based on the provided parameters.
 It uses differentially methylated CpG sites from single-cell DNA methylation (scDNAm) data
 to identify markers for various cell types.
