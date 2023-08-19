@@ -90,7 +90,8 @@
 </h2>
 <p>You can install the most recent updates of scMD from github with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install devtools if necessary</span></span>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html" class="external-link">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>warning <span class="op">=</span> <span class="cn">FALSE</span>, message <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co"># install devtools if necessary</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="st">"devtools"</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'devtools'</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -139,11 +140,7 @@ technical platform of the bulk data as either “450k_or_850k” or
 <code class="sourceCode R"><span><span class="co"># Estimate cell type proportions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Guintivano"</span><span class="op">)</span></span>
 <span><span class="va">Est.prop.scMD</span> <span class="op">=</span> <span class="fu"><a href="../reference/scMD.html">scMD</a></span><span class="op">(</span>bulk <span class="op">=</span> <span class="va">Guintivano_bulk_sub</span>, bulk_type <span class="op">=</span> <span class="st">"450k_or_850k"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: package 'S4Vectors' was built under R version 4.2.2</span></span>
-<span><span class="co">#&gt; Warning: package 'GenomeInfoDb' was built under R version 4.2.2</span></span>
-<span>                               </span>
-<span><span class="co"># Estimate when you have your own scDNAm data</span></span>
-<span><span class="co">#Est.prop.scMD = scMD(bulk = test_bulk, bulk_type = NULL,dat = beta_mtx,DM_df = df)</span></span></code></pre></div>
+<span>                              </span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="visualization">Visualization<a class="anchor" aria-label="anchor" href="#visualization"></a>
@@ -173,10 +170,7 @@ technical platform of the bulk data as either “450k_or_850k” or
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span><span class="st">""</span> , x<span class="op">=</span><span class="st">"Estimated fraction"</span>,fill <span class="op">=</span> <span class="st">"Cell Type"</span><span class="op">)</span> <span class="op">+</span><span class="fu">ggpubr</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/theme_pubr.html" class="external-link">theme_pubr</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">Samples</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"top"</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Guintivano"</span> <span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Non-neuron"</span> <span class="op">=</span> <span class="st">"#8491B4B2"</span>,</span>
-<span>                                                                                                                 <span class="st">"Neuron"</span> <span class="op">=</span> <span class="st">"#71D0F5FF"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(Var1, Var2)`</span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by 'CellType', 'Samples'. You can override</span></span>
-<span><span class="co">#&gt; using the `.groups` argument.</span></span></code></pre></div>
+<span>                                                                                                                 <span class="st">"Neuron"</span> <span class="op">=</span> <span class="st">"#71D0F5FF"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="vignette_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div class="section level2">

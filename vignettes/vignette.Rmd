@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 You can install the most recent updates of scMD from github with:
 
 ```{r setup}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 # install devtools if necessary
 if (!"devtools" %in% rownames(installed.packages())) {
   install.packages('devtools')
@@ -47,19 +48,17 @@ If you have your own bulk data for brain tissues and want to apply scMD directly
 
 In this section, we'll work with a selected subset of the DNAm data from Guintivano et al. as a demonstration. The full Guintivano DNAm dataset is accessible through the Bioconductor package FlowSorted.DLPFC.450k. Our provided subset comprises 12 samples from this data. When utilizing the data, you simply need to specify the technical platform of the bulk data as either "450k_or_850k" or "WGBS".
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 # Estimate cell type proportions
 data("Guintivano")
 Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k")
-                               
-# Estimate when you have your own scDNAm data
-#Est.prop.scMD = scMD(bulk = test_bulk, bulk_type = NULL,dat = beta_mtx,DM_df = df)
+                              
 
 ```
 
 ## Visualization
 
-```{r}
+```{r message=FALSE}
 
 Get_frac <- function(cell_frac,true_frac){
     tmp <- as.data.frame(cell_frac)
