@@ -15,10 +15,13 @@ Imports:
     minfi,
     quadprog,
     dplyr,
-    tidyverse
+    tidyverse,
+    MIND
 Remotes: 
     randel/scMD,
+    randel/MIND,
     bioc::3.17/EpiDISH,
-    bioc::3.17/minfi
+    bioc::3.17/minfi,
+    url::https://bioconductor.org/packages/3.16/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.1.tar.gz
 VignetteBuilder: knitr
 RoxygenNote: 7.2.1

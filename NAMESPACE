@@ -2,4 +2,11 @@
 
 export(get_sig)
 export(scMD)
+import(EnsDeconv)
+import(IlluminaHumanMethylation450kanno.ilmn12.hg19)
+import(dplyr)
+import(tidyverse)
 importFrom(EpiDISH,epidish)
+importFrom(MIND,est_frac)
+importFrom(minfi,makeGenomicRatioSetFromMatrix)
+importFrom(quadprog,solve.QP)

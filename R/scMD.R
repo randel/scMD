@@ -23,6 +23,13 @@
 #' scMD(bulk = my_bulk, bulk_type = my_bulk_type)
 #'
 #' @importFrom EpiDISH epidish
+#' @import dplyr
+#' @import tidyverse
+#' @import IlluminaHumanMethylation450kanno.ilmn12.hg19
+#' @import EnsDeconv
+#' @importFrom minfi makeGenomicRatioSetFromMatrix
+#' @importFrom MIND est_frac
+#' @importFrom quadprog solve.QP
 #'
 #' @export
 scMD <- function(bulk, bulk_type = "450k_or_850k", ncluster =5,

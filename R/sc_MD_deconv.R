@@ -30,7 +30,7 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
     phat_all <- append(phat_all, list(NNLS = frac_est))
 
   } else if("RPC" %in% dmet_list) {
-    frac_rpc <- EpiDISH::epidish(bulk, sig, method = 'RPC')$estF
+    frac_rpc <- epidish(bulk, sig, method = 'RPC')$estF
     phat_all <- append(phat_all, list(RPC = frac_rpc))
   }
 
