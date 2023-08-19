@@ -6,55 +6,47 @@
 \usage{
 scMD(
   bulk,
-  nc = 5,
-  bulk_type = "450k",
-  use_sc = "Luo",
-  dat = NULL,
-  DM_df = NULL,
-  dmet_list = c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "DeconRNASeq", "BayesPrism",
-    "ICeDT", "dtangle", "hspe"),
-  include_minfi = TRUE,
+  bulk_type = "450k_or_850k",
+  use_sc = "Both",
+  ncluster = 5,
+  dmet_list = NULL,
   nmrk = 100,
-  celltype_ind = NULL,
-  includeMval = T,
   gen_sig = T,
-  output_path = "."
+  celltype_ind = NULL,
+  output_path = ".",
+  sc_mtx = NULL,
+  DM_df = NULL
 )
 }
 \arguments{
-\item{bulk}{A matrix of bulk data.}
+\item{bulk}{A matrix of bulk data, with CpGs by sample.}
 
-\item{nc}{An integer specifying the number of cores for parallel computation. Default is 5.}
+\item{bulk_type}{A character string indicating the technical platform for the bulk data. Available options include "450k_or_850k", "WGBS", or "NULL".
+When set to "NULL", users are required to provide both `sc_mtx` and `DM_df`.}
 
-\item{bulk_type}{A character specifying the technical platform of bulk data. Default is "450k". It can also be chosen from "450k", "850k", "WGBS", or "NULL".
-When set to NULL, the users should provide `dat` and `DM_df`.}
+\item{use_sc}{A character specifying the inbuilt scDNAm to be used. Default is "Both". Options are "Luo", "Tian", "Both", or "NULL".
+When set to NULL, users must provide `sc_mtx` and `DM_df`.}
 
-\item{use_sc}{A character specifying the inbuilt scDNAm to be used. Default is "Luo". It can also be chosen from "Luo", "Tian", or "NULL".
-When set to NULL, the users should provide `dat` and `DM_df`.}
+\item{ncluster}{An integer specifying the number of cores for parallel computation. Default is 5.}
 
-\item{dat}{A beta matrix containing the scDNAm data. Default is NULL. When set to NULL, scMD will used inbuilt scDNAm data instead.}
+\item{dmet_list}{A character vector specifying the desired deconvolution methods to be used.
+If NULL (the default), the following methods will be included:
+c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "ICeDT", "Houseman", "NNLS", "RPC").}
 
-\item{DM_df}{A data frame containing information about differentially methylated CpG sites from scDNAm data.
-It should include columns for TargetID and celltype_ind. The columns celltype_ind contain p-values for each cell type.
-Default is NULL. When set to NULL, scMD will used inbuilt scDNAm data instead or the provided `dat` is already preprocessed.}
+\item{nmrk}{The number of markers per cell type used in deconvolution. Default is 100.}
 
-\item{dmet_list}{A character vector specifying the list of deconvolution methods. Default is c("CIBERSORT", "EPIC", "FARDEEP", "DCQ",
-"DeconRNASeq", "BayesPrism", "ICeDT", "dtangle", "hspe").}
+\item{gen_sig}{A logical value indicating whether to generate signatures for deconvolution. Default is TRUE. When FALSE,
+input data should already be preprocessed to only include markers for deconvolution.}
 
-\item{include_minfi}{A logical value indicating whether to include Minfi-based deconvolution. Default is TRUE.}
+\item{celltype_ind}{A character vector specifying the cell types included in the scMD analysis. Default is NULL, which includes all cell types from the input data.}
 
-\item{nmrk}{Number of markers per cell type used in deconvolution. Default is 100.}
+\item{output_path}{A character specifying the path for saving intermediate results. Default is the current directory (".").}
 
-\item{celltype_ind}{A character vector specifying the cell types to be included in the scMD analysis. Default is NULL, which
-includes all cell types from the input data.}
+\item{sc_mtx}{A beta matrix containing the scDNAm data. Default is NULL. When NULL, scMD uses the inbuilt scDNAm data.}
 
-\item{includeMval}{A logical value indicating whether to include M values (beta values transformed to M values) for deconvolution.
-Default is TRUE.}
-
-\item{gen_sig}{A logical value indicating whether to generate signatures for deconvolution. Default is TRUE. When set to FALSE, it means
-the input data is already preprocessed to only include markers for deconvolution.}
-
-\item{output_path}{A character specifying the path to save the output results. Default is the current directory (".").}
+\item{DM_df}{A data frame with information about differentially methylated CpG sites from scDNAm data, including columns for TargetID and celltype_ind.
+Columns for celltype_ind should contain p-values for each cell type. Default is NULL.
+When NULL, scMD uses the inbuilt scDNAm data, or the provided `sc_mtx` is considered preprocessed.}
 }
 \value{
 If scMD converges, return:
@@ -65,7 +57,7 @@ If scMD converges, return:
    }
 }
 \description{
-This function is used to perform signature generation and ensemble deconvolution using the scMD algorithm.
+This function performs signature generation and ensemble deconvolution using the scMD algorithm.
 }
 \examples{
 # Assuming 'my_bulk' and 'my_bulk_type' are defined
