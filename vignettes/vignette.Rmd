@@ -34,7 +34,7 @@ library(scMD)
 
 We've made available pre-processed scMD [signatures](https://github.com/randel/scMD/tree/main/Processed_data_450k850k) in CSV format for your convenience. You're welcome to download and use them directly.
 
-Should you have your own bulk data for brain tissues and wish to utilize scMD directly, follow the steps below to estimate cell type proportions. Note that our estimates are focused on seven primary brain cell types: Astrocytes, Endothelial cells, Microglia, Neurons, Oligodendrocytes, and OPC.
+If you have your own bulk data for brain tissues and want to apply scMD directly, follow the instructions below to estimate cell type proportions. Please be aware that our estimations focus on seven primary brain cell types: Astrocytes, Endothelial Cells, Excitatory Neurons, Inhibitory Neurons, Microglia, Oligodendrocytes, and OPC.
 
 ```{r, eval = FALSE}
 # Estimate cell type proportions
