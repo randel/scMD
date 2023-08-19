@@ -8,7 +8,7 @@ devtools::install_github("randel/scMD")
 ```
 
 ## Workflow
-<img src = "./man/figures/scMDFigure1.jpg">
+<img src = "./man/figures/scMDFigure1.png">
 
 
 Tutorial
@@ -19,4 +19,4 @@ https://randel.github.io/scMD/
 
 
 ## Reference
-Cai M, Zhou J, McKennan C, Wang J. (2023). scMD: cell type deconvolution using single-cell DNA methylation references.
+Cai, Manqi, et al. "scMD: cell type deconvolution using single-cell DNA methylation references." bioRxiv (2023): 2023-08.

@@ -31,7 +31,7 @@ To access the processed signatures, please navigate to the following link: https
 Workflow
 -------------------
 
-<img src = "./man/figures/scMDFigure1.jpg">
+<img src = "./man/figures/scMDFigure1.png">
 
 
 Tutorial
@@ -45,7 +45,7 @@ https://randel.github.io/scMD/
 Reference
 -----------------
 
-1. Cai M, Zhou J, McKennan C, Wang J. (2023). scMD: Cell Type Deconvolution Using Single-Cell DNA Methylation References.
+1. Cai, Manqi, et al. "scMD: cell type deconvolution using single-cell DNA methylation references." bioRxiv (2023): 2023-08.
 
 2. Lee, D. -S., Luo, C., Zhou, J., Chandran, S., Rivkin, A., Bartlett, A., Nery, J. R., Fitzpatrick, C., O’Connor, C., Dixon, J. R., et al. (2019). Simultaneous Profiling of 3D Genome Structure and DNA Methylation in Single Human Cells. Nature Methods, 16, 999–1006.
 
