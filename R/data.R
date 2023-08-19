@@ -115,3 +115,17 @@
 #' }
 #'
 #' "Tian_7ct_WGBS"
+#'
+
+#' Subset of sorted data from Guintivano et al.
+#'
+#' This dataset comprises the beta matrix of Guintivano's sorted DNAm data (`Guintivano_bulk_sub`),
+#' a corresponding meta files (`Guintivano_meta_sub`), and the true labels (`Guintivano_truefrac_sub`).
+#'
+#' @references Guintivano, J., Aryee, M. J. & Kaminsky, Z. A. A cell epigenotype specific model for
+#' the correction of brain cellular heterogeneity bias and its application to age, brain region
+#' and major depression. Epigenetics 8, 290–302 (2013).
+#'
+#' "Guintivano"
+
+
