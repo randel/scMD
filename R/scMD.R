@@ -37,10 +37,10 @@
 #'
 #' @export
 scMD <- function(bulk, bulk_type = "450k_or_850k",use_sc = "Both",ncluster =5,dmet_list = NULL,
-                 nmrk = 100,gen_sig = T,celltype_ind =  NULL,output_path = ".",sc_mtx = NULL,DM_df = NULL,
+                 nmrk = 100,gen_sig = T,celltype_ind =  NULL,output_path = ".",sc_mtx = NULL,DM_df = NULL
                   ){
   if(bulk_type == "450k_or_850k"){
-    load
+
   }
   overlap_features = intersect(rownames(sc_mtx),rownames(bulk))
   sc_mtx <- sc_mtx[overlap_features,]
