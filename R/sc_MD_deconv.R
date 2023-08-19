@@ -1,5 +1,5 @@
 sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
-                         nmrk = 100,celltype_ind =  NULL,output_path = "."){
+                         nmrk = 100,celltype_ind =  NULL,output_path = ".",gen_sig = T){
   overlap_features = intersect(rownames(sc_mtx),rownames(bulk))
   sc_mtx <- sc_mtx[overlap_features,]
   bulk <- bulk[overlap_features,]

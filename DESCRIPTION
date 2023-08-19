@@ -13,7 +13,9 @@ Imports:
     EnsDeconv,
     EpiDISH,
     minfi,
-    quadprog
+    quadprog,
+    dplyr,
+    tidyverse
 Remotes: 
     randel/scMD,
     bioc::3.17/EpiDISH,

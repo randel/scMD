@@ -1,6 +1,6 @@
 # Author: Manqi Cai
 ###################################################
-#' @title gen_sig
+#' @title get_sig
 #' @description  Generate Deconvolution Signatures
 #'
 #' This function generates deconvolution signatures based on the provided parameters.
@@ -19,7 +19,7 @@
 #' @return A matrix of signatures that can be used for deconvolution.
 #' @export
 #'
-gen_sig <- function(nmrk, sig = sig_all, DM_df = Mrk_twosided,
+get_sig <- function(nmrk, sig = sig_all, DM_df = Mrk_twosided,
                     ct_ind = c("Astro","Micro", "Neuro","Oligo")) {
   DM_df <- DM_df %>% filter(TargetID %in% rownames(sig))
 
