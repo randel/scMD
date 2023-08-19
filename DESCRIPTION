@@ -11,9 +11,11 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     EnsDeconv
-Suggests:
+    EpiDISH
     minfi
 Remotes: 
     randel/scMD
+    bioc::EpiDISH
+    bioc::minfi
 VignetteBuilder: knitr
 RoxygenNote: 7.2.1
