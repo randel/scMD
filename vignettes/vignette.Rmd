@@ -38,7 +38,8 @@ If you have your own bulk data for brain tissues and want to apply scMD directly
 
 ```{r, eval = FALSE}
 # Estimate cell type proportions
-Est.prop.scMD = scMD(bulk = test_bulk, bulk_type = test_bulk_type)
+data("Guintivano")
+Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k")
                                
 # Estimate when you have your own scDNAm data
 #Est.prop.scMD = scMD(bulk = test_bulk, bulk_type = NULL,dat = beta_mtx,DM_df = df)
