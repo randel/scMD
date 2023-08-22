@@ -1,0 +1,15 @@
+citHeader("To cite scMD in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "scMD: cell type deconvolution using single-cell DNA methylation references",
+  author   = "Manqi Cai; Jingtian Zhou; Chris McKennan; Jiebiao Wang",
+  journal  = "bioRxiv",
+  pages = "2023--08",
+  year     = 2023,
+  doi      = "10.1101/2023.08.03.551733",
+  publisher= "Cold Spring Harbor Laboratory",
+  textVersion = paste(
+
+  )
+)

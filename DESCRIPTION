@@ -2,8 +2,15 @@ Package: scMD
 Type: Package
 Title: (single cell Methylation Deconvolution) a cellular deconvolution framework to reliably estimate cell type fractions from tissue-level DNAm data.
 Version: 0.2.0
-Authors@R: as.person(c( 
-    "Manqi Cai <manqi.cai.mk@gmail.com> [aut, cre]"))
+Authors@R: c(
+    person("Manqi", "Cai", role = c("aut", "cre"),
+           email = "manqi.cai.mk@gmail.com",
+      comment = c(ORCID = "0000-0003-3296-1730")
+    ),
+    person("Jiebiao", "Wang", role = "aut",
+      comment = c(ORCID = "0000-0003-3828-4400")
+    )
+  )
 Maintainer: Manqi Cai <manqi.cai.mk@gmail.com>
 Description: (single cell Methylation Deconvolution) a cellular deconvolution framework to reliably estimate cell type fractions from tissue-level DNAm data.
 License: MIT + file LICENSE
@@ -23,5 +30,6 @@ Remotes:
     bioc::3.17/EpiDISH,
     bioc::3.17/minfi,
     url::https://bioconductor.org/packages/3.16/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.1.tar.gz
+BugReports: https://github.com/randel/scMD/issues
 VignetteBuilder: knitr
 RoxygenNote: 7.2.1

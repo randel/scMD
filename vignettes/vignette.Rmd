@@ -34,8 +34,6 @@ if (!"scMD" %in% rownames(installed.packages())) {
 
 # load
 library(scMD)
-library(ggpubr)
-library(reshape2)
 ```
 
 ## Data
@@ -46,12 +44,12 @@ If you have your own bulk data for brain tissues and want to apply scMD directly
 
 ## scMD Example: Guintivano
 
-In this section, we'll work with a selected subset of the DNAm data from Guintivano et al. as a demonstration. The full Guintivano DNAm dataset is accessible through the Bioconductor package FlowSorted.DLPFC.450k. Our provided subset comprises 12 samples from this data. When utilizing the data, you simply need to specify the technical platform of the bulk data as either "450k_or_850k" or "WGBS".
+In this section, we'll work with a selected subset of the DNAm data from Guintivano et al. as a demonstration. The full Guintivano DNAm dataset is accessible through the Bioconductor package FlowSorted.DLPFC.450k. Our provided subset comprises 12 samples from this data. When utilizing the data, you simply need to specify the technical platform of the bulk data as either "450k_or_850k" or "WGBS". Additionally, consider setting an output_path to save intermediate results.
 
 ```{r message=FALSE, warning=FALSE}
 # Estimate cell type proportions
 data("Guintivano")
-Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k")
+Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k",output_path = "~/Desktop/")
                               
 
 ```
@@ -59,33 +57,7 @@ Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k")
 ## Visualization
 
 ```{r message=FALSE}
-
-Get_frac <- function(cell_frac,true_frac){
-    tmp <- as.data.frame(cell_frac)
-    tmp$NeuN_pos <- tmp$Exc +tmp$Inh
-    tmp$NeuN_neg <- 1-(tmp$NeuN_pos)
-    tmp <- as.matrix(tmp[rownames(true_frac),colnames(true_frac)])
-    tmp <-  melt(tmp)
-  return(tmp)
-}
-
-frac_Guint = Get_frac(Est.prop.scMD$scMD_p,true_frac = Guintivano_truefrac_sub)
-tf <- reshape2::melt(Guintivano_truefrac_sub) %>%dplyr::select(true = value,everything())
-
-
-frac_Guint %>% full_join(tf) %>%
-  mutate(CellType = ifelse(Var2 == "NeuN_pos","Neuron","Non-neuron"),
-         newind  = paste0(true,CellType),
-         Samples = ifelse(newind %in% c("0Neuron","1Non-neuron"), "NeuN- samples","NeuN+ samples"),
-         Samples = factor(Samples, levels = c("NeuN+ samples", "NeuN- samples")),
-         ref = "scMD") %>% mutate(sp = paste0(Var1,true))%>% unique() %>% group_by(CellType,Samples,ref) %>% summarize(value = mean(value)) %>%
-  ggplot(aes(x = value, y = ref , fill = CellType)) +
-  geom_col() +
-  labs(y ="" , x="Estimated fraction",fill = "Cell Type") +ggpubr::theme_pubr()+
-  facet_wrap(~Samples)+ theme(legend.position="top")+ggtitle("Guintivano" )+scale_fill_manual(values=c("Non-neuron" = "#8491B4B2",
-                                                                                                                 "Neuron" = "#71D0F5FF"))
+heatmap(Est.prop.scMD$scMD_p)
 ```
 
-Reference
-----------
-* Guintivano, J., Aryee, M. J. & Kaminsky, Z. A. A cell epigenotype specific model for the correction of brain cellular heterogeneity bias and its application to age, brain region and major depression. Epigenetics 8, 290–302 (2013).
+

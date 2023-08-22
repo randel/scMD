@@ -8,7 +8,7 @@
 #' to identify markers for various cell types.
 #'
 #' @param nmrk An integer specifying the number of marker CpG sites to consider for each cell type.
-#' @param beta_mtx A matrix representing the scDNAm data. Default is NULL.
+#' @param beta_mtx A matrix representing the scDNAm data, CpG sites by cell types. Default is NULL.
 #' If NULL, the function will utilize the inbuilt scDNAm dataset.
 #' @param DM_df A data frame detailing differentially methylated CpG sites from scDNAm data.
 #' It should include columns for TargetID and celltype_ind, where columns corresponding to celltype_ind

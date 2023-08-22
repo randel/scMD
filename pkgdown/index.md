@@ -45,7 +45,7 @@ https://randel.github.io/scMD/
 Reference
 -----------------
 
-1. Cai, Manqi, et al. "scMD: cell type deconvolution using single-cell DNA methylation references." bioRxiv (2023): 2023-08.
+1. Cai, Manqi, et al. "scMD: cell type deconvolution using single-cell DNA methylation references." bioRxiv (2023): 2023-08. https://www.biorxiv.org/content/biorxiv/early/2023/08/06/2023.08.03.551733.full.pdf
 
 2. Lee, D. -S., Luo, C., Zhou, J., Chandran, S., Rivkin, A., Bartlett, A., Nery, J. R., Fitzpatrick, C., O’Connor, C., Dixon, J. R., et al. (2019). Simultaneous Profiling of 3D Genome Structure and DNA Methylation in Single Human Cells. Nature Methods, 16, 999–1006.
 
