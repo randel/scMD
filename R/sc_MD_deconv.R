@@ -50,7 +50,7 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
   )
 
   # Generate results for "beta"
-  suppressWarnings(
+  suppressMessages(
     res_Ens <- gen_all_res_list( count_bulk = bulk, ref_list = ref_list_beta,
                                  params = get_params(
                                    data_type = "singlecell-rna", data_name = "beta", n_markers = 50,  Marker.Method = "none",
@@ -76,7 +76,7 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
   )
 
   # Generate results for "Mval"
-  suppressWarnings(
+  suppressMessages(
     res_Ens_mval <- gen_all_res_list(
       count_bulk = BetaToMvalue(bulk), ref_list = ref_list_Mval,
       params = get_params( data_type = "singlecell-rna",  data_name = "Mval",

@@ -39,7 +39,7 @@ If scMD converges, return:
 This function performs signature generation and ensemble deconvolution using the scMD algorithm.
 }
 \examples{
-# Assuming 'my_bulk' and 'my_bulk_type' are defined
-scMD(bulk = my_bulk, bulk_type = my_bulk_type)
+data("Guintivano")
+Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k",output_path = "~/Desktop/")
 
 }

@@ -21,7 +21,7 @@ should have p-values for each cell type.}
 \item{ct_ind}{A character vector listing the cell types to include in the analysis.
 Default is c("Astro","Micro", "Neuro","Oligo").}
 
-\item{beta_mtx}{A matrix representing the scDNAm data. Default is NULL.
+\item{beta_mtx}{A matrix representing the scDNAm data, CpG sites by cell types. Default is NULL.
 If NULL, the function will utilize the inbuilt scDNAm dataset.}
 }
 \value{

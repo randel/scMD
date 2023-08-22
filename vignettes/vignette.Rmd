@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 You can install the most recent updates of scMD from github with:
 
-```{r setup}
+```{r setup, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 # install devtools if necessary
 if (!"devtools" %in% rownames(installed.packages())) {
