@@ -19,4 +19,6 @@ https://randel.github.io/scMD/
 
 
 ## Reference
-Cai, Manqi, et al. "scMD: cell type deconvolution using single-cell DNA methylation references." bioRxiv (2023): 2023-08.
+Manqi Cai, Jingtian Zhou, Chris McKennan, Jiebiao Wang.
+scMD: cell type deconvolution using single-cell DNA methylation references.
+bioRxiv 2023.08.03.551733; doi: https://doi.org/10.1101/2023.08.03.551733
