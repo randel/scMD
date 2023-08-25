@@ -25,7 +25,7 @@ Default is c("Astro","Micro", "Neuro","Oligo").}
 If NULL, the function will utilize the inbuilt scDNAm dataset.}
 }
 \value{
-A matrix of signatures that can be used for deconvolution.
+A matrix of signatures that can be used for deconvolution, CpG sites by cell types.
 }
 \description{
 Generate Deconvolution Signatures

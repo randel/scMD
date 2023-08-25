@@ -16,7 +16,7 @@
 #' @param ct_ind A character vector listing the cell types to include in the analysis.
 #' Default is c("Astro","Micro", "Neuro","Oligo").
 #'
-#' @return A matrix of signatures that can be used for deconvolution.
+#' @return A matrix of signatures that can be used for deconvolution, CpG sites by cell types.
 #' @export
 #'
 get_sig <- function(nmrk, sig = sig_all, DM_df = Mrk_twosided,
