@@ -13,3 +13,8 @@ inst/doc
 *.txt
 *.rds
 .phat_all.rds
+_pkgdown.yml
+scMD.Rproj
+.gitignore
+.Rbuildignore
+inst
