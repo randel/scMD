@@ -16,6 +16,8 @@ Description: (single cell Methylation Deconvolution) a cellular deconvolution fr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Suggests:
+    rmarkdown
 Imports: 
     EnsDeconv,
     EpiDISH,

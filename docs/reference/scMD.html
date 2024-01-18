@@ -62,59 +62,51 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">scMD</span><span class="op">(</span></span>
-<span>  <span class="va">bulk</span>,</span>
-<span>  bulk_type <span class="op">=</span> <span class="st">"450k_or_850k"</span>,</span>
-<span>  ncluster <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>  dmet_list <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  nmrk <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  output_path <span class="op">=</span> <span class="st">"."</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">scMD</span><span class="op">(</span>
+  <span class="va">bulk</span>,
+  bulk_type <span class="op">=</span> <span class="st">"450k_or_850k"</span>,
+  ncluster <span class="op">=</span> <span class="fl">5</span>,
+  dmet_list <span class="op">=</span> <span class="cn">NULL</span>,
+  nmrk <span class="op">=</span> <span class="fl">100</span>,
+  enableFileSaving <span class="op">=</span> <span class="cn">FALSE</span>,
+  output_path <span class="op">=</span> <span class="cn">NULL</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>bulk</dt>
 <dd><p>A matrix of bulk data, with CpGs by sample.</p></dd>
-
-
 <dt>bulk_type</dt>
 <dd><p>A character string indicating the technical platform for the bulk data. Available options include "450k_or_850k" or "WGBS",.</p></dd>
-
-
 <dt>ncluster</dt>
 <dd><p>An integer specifying the number of cores for parallel computation. Default is 5.</p></dd>
-
-
 <dt>dmet_list</dt>
 <dd><p>A character vector specifying the desired deconvolution methods to be used.
 If NULL (the default), the following methods will be included:
 c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "ICeDT", "Houseman", "NNLS", "RPC").</p></dd>
-
-
 <dt>nmrk</dt>
 <dd><p>The number of markers per cell type used in deconvolution. Default is 100.</p></dd>
-
-
+<dt>enableFileSaving</dt>
+<dd><p>Enable Saving of Intermediate Output
+(Optional) A boolean flag that controls the saving of intermediate outputs as separate files. 
+        When set to TRUE, intermediate outputs of the analysis will be saved to files. 
+        If not explicitly set, this parameter defaults to FALSE, meaning that intermediate 
+        outputs will not be saved by default.</p></dd>
 <dt>output_path</dt>
-<dd><p>A character specifying the path for saving intermediate results. Default is the current directory (".").</p></dd>
-
+<dd><p>A character specifying the path for saving intermediate results. Default is NULL.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>If scMD converges, return:</p><ul><li><p>scMD_p: matrix, scMD estiamted CTS fractions.</p></li>
+    <p>If scMD converges, return:</p><ul><li><p>scMD_p: matrix, scMD estiamted CTS fractions.</p></li>
 <li><p>phat_all: list, estimated cell-type fractions.</p></li>
 </ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Guintivano"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">Est.prop.scMD</span> <span class="op">=</span> <span class="fu">scMD</span><span class="op">(</span>bulk <span class="op">=</span> <span class="va">Guintivano_bulk_sub</span>, bulk_type <span class="op">=</span> <span class="st">"450k_or_850k"</span>,output_path <span class="op">=</span> <span class="st">"~/Desktop/"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package ‘S4Vectors’ was built under R version 4.2.2</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package ‘GenomeInfoDb’ was built under R version 4.2.2</span>
-<span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Guintivano"</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">Est.prop.scMD</span> <span class="op">=</span> <span class="fu">scMD</span><span class="op">(</span>bulk <span class="op">=</span> <span class="va">Guintivano_bulk_sub</span>, bulk_type <span class="op">=</span> <span class="st">"450k_or_850k"</span>,output_path <span class="op">=</span> <span class="st">"~/Desktop/"</span><span class="op">)</span></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </div>
@@ -129,7 +121,7 @@ c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "ICeDT", "Houseman", "NNLS", "RPC").</p
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer></div>

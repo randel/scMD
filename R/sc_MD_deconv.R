@@ -5,8 +5,8 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
   bulk <- bulk[overlap_features,]
   
   if(enableFileSaving){
-    if(!is.null(outpath)){
-      dir.create(outpath,showWarnings = F)
+    if(!is.null(output_path)){
+      dir.create(output_path,showWarnings = F)
     }
   }
 
@@ -63,7 +63,7 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
                                  params = get_params(
                                    data_type = "singlecell-rna", data_name = "beta", n_markers = 50,  Marker.Method = "none",
                                    TNormalization = c("none"),  CNormalization = c("none"), Scale = c("linear","log"),
-                                   dmeths = dmet_list ), outpath = outpath,enableFileSaving = enableFileSaving,
+                                   dmeths = dmet_list ), outpath = output_path,enableFileSaving = enableFileSaving,
                                  parallel_comp = T, ncore = ncluster ) )
 
   ind = sapply(res_Ens, function(x){

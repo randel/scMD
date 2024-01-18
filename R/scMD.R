@@ -49,19 +49,19 @@ scMD <- function(bulk, bulk_type = "450k_or_850k", ncluster =5,
     data("Tian_7ct_450850")
 
     Lee_res <- sc_MD_deconv(bulk,sc_mtx = Lee_sig_all,DM_df = Lee_DF_450850,ncluster,
-                             dmet_list,nmrk,NULL,output_path)
+                             dmet_list,nmrk,NULL,enableFileSaving,output_path)
 
     Tian_res <- sc_MD_deconv(bulk,sc_mtx = Tian_sig_all,DM_df = Tian_DF_450850,ncluster,
-                             dmet_list,nmrk,NULL,output_path)
+                             dmet_list,nmrk,NULL,enableFileSaving,output_path)
   }else{
     data("Lee_7ct_WGBS")
     data("Tian_7ct_WGBS")
 
     Lee_res <- sc_MD_deconv(bulk,sc_mtx = Lee_sig_all_WGBS,DM_df = Lee_DF_WGBS,ncluster,
-                            dmet_list,nmrk,NULL,output_path)
+                            dmet_list,nmrk,NULL,enableFileSaving,output_path)
 
     Tian_res <- sc_MD_deconv(bulk,sc_mtx = Tian_sig_all_WGBS,DM_df = Tian_DF_WGBS,ncluster,
-                             dmet_list,nmrk,NULL,output_path)
+                             dmet_list,nmrk,NULL,enableFileSaving,output_path)
   }
 
   # Call CTS_EnsDeconv_wrapper function

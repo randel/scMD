@@ -49,7 +49,7 @@ In this section, we'll work with a selected subset of the DNAm data from Guintiv
 ```{r message=FALSE, warning=FALSE}
 # Estimate cell type proportions
 data("Guintivano")
-Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k",output_path = "~/Desktop/")
+Est.prop.scMD = scMD(bulk = Guintivano_bulk_sub, bulk_type = "450k_or_850k")
                               
 
 ```
