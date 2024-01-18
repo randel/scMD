@@ -10,7 +10,12 @@
 #' If NULL (the default), the following methods will be included:
 #' c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "ICeDT", "Houseman", "NNLS", "RPC").
 #' @param nmrk The number of markers per cell type used in deconvolution. Default is 100.
-#' @param output_path A character specifying the path for saving intermediate results. Default is the current directory (".").
+#' @param enableFileSaving Enable Saving of Intermediate Output
+#'  (Optional) A boolean flag that controls the saving of intermediate outputs as separate files. 
+#'          When set to TRUE, intermediate outputs of the analysis will be saved to files. 
+#'          If not explicitly set, this parameter defaults to FALSE, meaning that intermediate 
+#'          outputs will not be saved by default.
+#' @param output_path A character specifying the path for saving intermediate results. Default is NULL.
 #'
 #' @return If scMD converges, return:
 #' \itemize{
@@ -33,7 +38,7 @@
 #'
 #' @export
 scMD <- function(bulk, bulk_type = "450k_or_850k", ncluster =5,
-                 dmet_list = NULL, nmrk = 100, output_path = "."){
+                 dmet_list = NULL, nmrk = 100, enableFileSaving = FALSE,output_path = NULL){
 
   if(is.null(dmet_list)){
     dmet_list <- c("CIBERSORT", "EPIC", "FARDEEP", "DCQ", "ICeDT", "Houseman", "NNLS", "RPC")

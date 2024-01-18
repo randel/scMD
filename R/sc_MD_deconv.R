@@ -1,9 +1,14 @@
 sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
-                         nmrk = 100,celltype_ind =  NULL,output_path = ".",gen_sig = T){
+                         nmrk = 100,celltype_ind =  NULL,enableFileSaving = FALSE,output_path = NULL,gen_sig = T){
   overlap_features = intersect(rownames(sc_mtx),rownames(bulk))
   sc_mtx <- sc_mtx[overlap_features,]
   bulk <- bulk[overlap_features,]
-
+  
+  if(enableFileSaving){
+    if(!is.null(outpath)){
+      dir.create(outpath,showWarnings = F)
+    }
+  }
 
   if(is.null(celltype_ind)){
     celltype_ind = colnames(sc_mtx)
@@ -33,10 +38,13 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
     suppressMessages(frac_rpc <- epidish(bulk, sig, method = 'RPC')$estF)
     phat_all <- append(phat_all, list(RPC = frac_rpc))
   }
-
-  if(length(phat_all) > 1) {
-    saveRDS(phat_all, file = paste0(output_path, "phat_all.rds"))
+  
+  if(enableFileSaving){
+    if(length(phat_all) > 1) {
+      saveRDS(phat_all, file = paste0(output_path, "phat_all.rds"))
+    }
   }
+  
 
   dmet_list <- setdiff(dmet_list, c("Houseman", "NNLS", "RPC"))
 
@@ -55,7 +63,7 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
                                  params = get_params(
                                    data_type = "singlecell-rna", data_name = "beta", n_markers = 50,  Marker.Method = "none",
                                    TNormalization = c("none"),  CNormalization = c("none"), Scale = c("linear","log"),
-                                   dmeths = dmet_list ), outpath = paste0(output_path,"beta"),
+                                   dmeths = dmet_list ), outpath = outpath,enableFileSaving = enableFileSaving,
                                  parallel_comp = T, ncore = ncluster ) )
 
   ind = sapply(res_Ens, function(x){
@@ -82,7 +90,7 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
       params = get_params( data_type = "singlecell-rna",  data_name = "Mval",
                            n_markers = 50,  Marker.Method = "none", TNormalization = c("none"),
                            CNormalization = c("none"), Scale = c("linear"),  dmeths = dmet_list ),
-      outpath = output_path, parallel_comp = T, ncore = ncluster ) )
+      outpath = output_path,enableFileSaving = enableFileSaving, parallel_comp = T, ncore = ncluster ) )
 
   ind = sapply(res_Ens_mval, function(x){
     length(x[["a"]][["p_hat"]][[1]])
@@ -96,7 +104,10 @@ sc_MD_deconv <- function(bulk, sc_mtx, DM_df,ncluster =5,dmet_list,
   phat_all <- append(phat_all, phat_list1)
 
   # Save the combined phat values
-  saveRDS(phat_all, file = paste0(output_path,"phat_all.rds"))
+  if(enableFileSaving){
+    saveRDS(phat_all, file = paste0(output_path,"phat_all.rds"))
+  }
+  
 
   return(phat_all)
 
